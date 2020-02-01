@@ -66,16 +66,8 @@ namespace Player {
                 cameraTargetRotation -= 90f;
             }
 
-            if (velocity.magnitude > velocityTreshold)
-            {
-                lastCameraTargetRotation = cameraTargetRotation;
-            }
-            else
-            {
-                cameraTargetRotation = lastCameraTargetRotation;
-            }
-
-
+            lastCameraTargetRotation = cameraTargetRotation;
+            
             var cameraCurrentRotation = (transform.position - camera.position).ToVector2().GetAngle();
 
             var newCameraAngle = Mathf.MoveTowardsAngle(cameraCurrentRotation, cameraTargetRotation, Time.deltaTime * cameraRotateSpeed);
