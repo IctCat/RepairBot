@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: elec_cabin_fuses
+    second: {fileID: 2100000, guid: 1e6e19f37b4b03a4e8230a0ccd21af2b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: power_generator
     second: {fileID: 2100000, guid: aa84a2888b15ec14c992bc5424246542, type: 2}
   - first:
