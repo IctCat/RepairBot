@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PowerGraph {
+
+namespace PowerNetwork {
     abstract public class PowerTypes
     {
         private bool working;
@@ -18,6 +19,10 @@ namespace PowerGraph {
         void Update()
         {
 
+        }
+
+        public void SetWorking(bool working) {
+            this.working = working;
         }
 
         public bool IsWorking() {

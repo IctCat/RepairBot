@@ -1,20 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Entities;
 
-namespace PowerGraph {
-    public enum NodeType {Generator, Socket};
+namespace PowerNetwork {
 
     [System.Serializable]
     public class PowerNode : PowerTypes
     {
-        public NodeType nodeType;
+        public EntityType nodeType;
         public int charge;
 
         // Start is called before the first frame update
         void Start()
         {
-
+            if(this.nodeType == EntityType.Link) {
+                this.SetWorking(false);
+            } 
         }
 
         // Update is called once per frame
