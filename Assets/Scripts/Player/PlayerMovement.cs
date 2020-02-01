@@ -9,9 +9,8 @@ namespace Player {
         public float speed = 10f;
         public float cameraRotateSpeed = 1f;
         public float cameraDistance = 10f;
-        public float velocityTreshold = 0.1f;
         public float initialCameraRotation = 0f;
-        public float rotationTreshold = 30f;
+        
         public Transform pushPoint;
         public Transform camera;
 
@@ -62,10 +61,10 @@ namespace Player {
             
             var move = Vector3.zero;
 
-            if (Input.GetKey ("w") || Input.GetKey("up")) {
+            if (Input.GetKey (KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
                 move.z = 1f;
             }
-            if (Input.GetKey ("s") || Input.GetKey("down")) {
+            if (Input.GetKey (KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
                 move.z = -1f;
             }
 
@@ -75,7 +74,12 @@ namespace Player {
                 move.y = 0;
                 move.Normalize();
             }
-            
+
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift))
+            {
+                move *= 2f;
+            }
+
             GetComponent<Rigidbody>().AddForceAtPosition(move * speed, pushPoint.position);
 
             //GetComponent<Rigidbody>().AddForceAtPosition(Vector3.down * stabilityForce, stabilityPoint.position);
@@ -95,7 +99,7 @@ namespace Player {
             }
 
 #if DEBUG
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 Die();
             }

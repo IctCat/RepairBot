@@ -6,8 +6,9 @@ using UnityEngine;
 namespace PowerNetwork {
     abstract public class PowerTypes
     {
-        private bool working;
+        public bool working;
         public int cost;
+        public int index;
 
         // Start is called before the first frame update
         void Start()
@@ -22,6 +23,7 @@ namespace PowerNetwork {
         }
 
         public void SetWorking(bool working) {
+            //Debug.Log("Set working!" + working.ToString());
             this.working = working;
         }
 
@@ -33,9 +35,16 @@ namespace PowerNetwork {
         /// <summary> Repairs the element and returns reduced resource(int)</summary>
         /// <param name="resource">Int value</param>
         public int Repair(int resource) {
-            this.working = true;
-            resource -= this.cost;
+            if(!this.IsWorking()) {
+                this.working = true;
+                resource -= this.cost;
+            }
             return resource;
         }
+
+        //TODO if time. Generators have to be activated and electricity starts flowing to socket.
+        /*public void Activate() {
+            this.working = true;
+        }*/
     }
 }

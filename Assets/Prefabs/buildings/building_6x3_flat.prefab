@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 6782536265455813470}
   - component: {fileID: 7258093164697243303}
   - component: {fileID: 2272118975594766050}
+  - component: {fileID: 7749737478658418523}
   m_Layer: 0
   m_Name: building_6x3_flat
   m_TagString: Untagged
@@ -246,6 +247,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &7749737478658418523
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5965912918533015551}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1048701601940495421, guid: 317eda6ed85213a43ad625753e702c23, type: 3}
 --- !u!1 &6994935493668507357
 GameObject:
   m_ObjectHideFlags: 0
