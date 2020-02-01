@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public int electricity = 5;
-    public int scrap = 0;
+    public int scrap = 4;
     private float timer = 0.0f;
     public GameObject electricityTextObject;
     private TextMeshProUGUI electricityText;
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         this.scrapText.text = this.scrap.ToString();
         
         //InvokeRepeating("DrainElectricity", 1.0f, 1.0f);    
-        StartCoroutine(DrainEnumerator(1, 1));
+        StartCoroutine(DrainEnumerator(1, 10));
     }
 
     // Update is called once per frame
@@ -32,26 +32,30 @@ public class GameManager : MonoBehaviour
     }
 
     IEnumerator DrainEnumerator(int cost, int repeatRate) {
-        this.DecreaseElectricity(cost);
-        yield return new WaitForSeconds(repeatRate);
+        yield return new WaitForSeconds(repeatRate); // New line
+        while (true) {
+            this.DecreaseElectricity(cost);
+            yield return new WaitForSeconds(repeatRate);
+        }
+        yield return null;
     }
 
-    void IncreaseElectricity(int addition) {
+    public void IncreaseElectricity(int addition) {
         this.electricity += addition;
         this.electricityText.text = this.electricity.ToString();
     }
     
-    void DecreaseElectricity(int cost) {
+    public void DecreaseElectricity(int cost) {
         this.electricity -= cost;
         this.electricityText.text = this.electricity.ToString();
     }
 
-    void IncreaseScrap(int addition) {
+    public void IncreaseScrap(int addition) {
         this.scrap += addition;
         this.scrapText.text = this.scrap.ToString();
     }
 
-    void DecreaseScrap(int cost) {
+    public void DecreaseScrap(int cost) {
         this.scrap -= cost;
         this.scrapText.text = this.scrap.ToString();
     }

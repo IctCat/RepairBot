@@ -547,7 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   electricity: 5
-  scrap: 0
+  scrap: 4
   electricityTextObject: {fileID: 1704935608}
   scrapTextObject: {fileID: 1512472140}
 --- !u!1001 &829220036
@@ -969,7 +969,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: DEBUG
+  m_text: Scrap DEBUG
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1038,10 +1038,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1512472141}
-    characterCount: 5
+    characterCount: 11
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -1077,7 +1077,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512472140}
   m_LocalRotation: {x: -0.000000029802319, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 247}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.9945436, y: 0.9945436, z: 0.9945436}
   m_Children: []
   m_Father: {fileID: 321498711}
@@ -1085,7 +1085,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -4762, y: 885}
+  m_AnchoredPosition: {x: -4335, y: 1946}
   m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1639167226
@@ -1282,7 +1282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -4322, y: 1082}
+  m_AnchoredPosition: {x: -4333, y: 1671}
   m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1704935610
@@ -1303,7 +1303,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: DEBUG
+  m_text: Electricity DEBUG
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1348,7 +1348,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 12
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1372,12 +1372,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1704935610}
-    characterCount: 5
+    characterCount: 17
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1627,6 +1627,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2041284080855072518, guid: 2e2cb40e071b638488168a2d7335f29a,
+        type: 3}
+      propertyPath: m_TagString
+      value: GameManager
+      objectReference: {fileID: 0}
     - target: {fileID: 2899291044121887290, guid: 2e2cb40e071b638488168a2d7335f29a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1851,55 +1856,98 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodes:
-  - cost: 0
+  - working: 1
+    cost: 0
+    index: 0
     nodeType: 1
     charge: 2
-  - cost: 1
+    nodeEdges: 000000000200000004000000
+  - working: 0
+    cost: 1
+    index: 1
     nodeType: 2
     charge: 0
-  - cost: 1
+    nodeEdges: 0000000001000000
+  - working: 0
+    cost: 1
+    index: 2
     nodeType: 0
     charge: 10
-  - cost: 1
+    nodeEdges: 01000000
+  - working: 0
+    cost: 1
+    index: 3
     nodeType: 2
     charge: 0
-  - cost: 1
+    nodeEdges: 0200000003000000
+  - working: 0
+    cost: 1
+    index: 4
     nodeType: 0
     charge: 30
-  - cost: 1
+    nodeEdges: 03000000
+  - working: 0
+    cost: 1
+    index: 5
     nodeType: 2
     charge: 0
-  - cost: 1
+    nodeEdges: 040000000500000007000000
+  - working: 0
+    cost: 1
+    index: 6
     nodeType: 2
     charge: 0
-  - cost: 1
+    nodeEdges: 0500000006000000
+  - working: 0
+    cost: 1
+    index: 7
     nodeType: 0
     charge: 0
-  - cost: 1
+    nodeEdges: 06000000
+  - working: 0
+    cost: 1
+    index: 8
     nodeType: 1
     charge: 0
+    nodeEdges: 07000000
   edges:
-  - cost: 0
+  - working: 0
+    cost: 0
+    index: 0
     startIndex: 0
     endIndex: 1
-  - cost: 0
+  - working: 0
+    cost: 0
+    index: 1
     startIndex: 1
     endIndex: 2
-  - cost: 0
+  - working: 0
+    cost: 0
+    index: 2
     startIndex: 0
     endIndex: 3
-  - cost: 0
+  - working: 0
+    cost: 0
+    index: 3
     startIndex: 3
     endIndex: 4
-  - cost: 0
+  - working: 0
+    cost: 0
+    index: 4
     startIndex: 0
     endIndex: 5
-  - cost: 0
+  - working: 0
+    cost: 0
+    index: 5
     startIndex: 5
     endIndex: 6
-  - cost: 0
+  - working: 0
+    cost: 0
+    index: 6
     startIndex: 6
     endIndex: 7
-  - cost: 0
+  - working: 0
+    cost: 0
+    index: 7
     startIndex: 5
     endIndex: 8
