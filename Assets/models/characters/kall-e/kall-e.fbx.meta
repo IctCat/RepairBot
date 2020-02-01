@@ -3,7 +3,22 @@ guid: aec04532c1b46e64cb0ae313039ff178
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: a1f9a19975112394e91f590a445716b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kall-e
+    second: {fileID: 2100000, guid: a1f9a19975112394e91f590a445716b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kall-e_face
+    second: {fileID: 2100000, guid: c16bf86ae755a4d4f8fe2da43cb24a29, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
