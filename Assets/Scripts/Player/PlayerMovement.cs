@@ -15,7 +15,28 @@ namespace Player {
         public Transform pushPoint;
         public Transform camera;
 
+        public Collider stabilityCollider;
+
         private float lastCameraTargetRotation;
+        private bool isAlive;
+
+        public void Die()
+        {
+            isAlive = false;
+
+            //Force recalculate center of mass
+            var rigidbody = GetComponent<Rigidbody>();
+            var velocity = rigidbody.velocity;
+            var angularVelocity = rigidbody.angularVelocity;
+
+            DestroyImmediate(stabilityCollider);
+            DestroyImmediate(rigidbody);
+            
+            var newRigidbody = gameObject.AddComponent<Rigidbody>();
+
+            newRigidbody.velocity = velocity;
+            newRigidbody.angularVelocity = angularVelocity;
+        }
 
         void Start() {
             if (camera == null)
@@ -24,6 +45,7 @@ namespace Player {
             }
 
             lastCameraTargetRotation = initialCameraRotation;
+            isAlive = true;
         }
 
         private void LateUpdate()
@@ -31,7 +53,13 @@ namespace Player {
             UpdateCamera();
         }
 
-        void FixedUpdate () {
+        void FixedUpdate ()
+        {
+            if (!isAlive)
+            {
+                return;
+            }
+            
             var move = Vector3.zero;
 
             if (Input.GetKey ("w") || Input.GetKey("up")) {
@@ -48,13 +76,13 @@ namespace Player {
                 move.Normalize();
             }
             
-            GetComponent<Rigidbody>().AddForceAtPosition(move *= speed, pushPoint.position);
+            GetComponent<Rigidbody>().AddForceAtPosition(move * speed, pushPoint.position);
+
+            //GetComponent<Rigidbody>().AddForceAtPosition(Vector3.down * stabilityForce, stabilityPoint.position);
         }
 
         private void UpdateCamera()
         {
-            var velocity = GetComponent<Rigidbody>().velocity.ToVector2();
-
             //Manual camera rotate
             var cameraTargetRotation = lastCameraTargetRotation;
             if (Input.GetKeyDown(KeyCode.A))
@@ -66,16 +94,15 @@ namespace Player {
                 cameraTargetRotation -= 90f;
             }
 
-            if (velocity.magnitude > velocityTreshold)
+#if DEBUG
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                lastCameraTargetRotation = cameraTargetRotation;
+                Die();
             }
-            else
-            {
-                cameraTargetRotation = lastCameraTargetRotation;
-            }
+#endif
 
-
+            lastCameraTargetRotation = cameraTargetRotation;
+            
             var cameraCurrentRotation = (transform.position - camera.position).ToVector2().GetAngle();
 
             var newCameraAngle = Mathf.MoveTowardsAngle(cameraCurrentRotation, cameraTargetRotation, Time.deltaTime * cameraRotateSpeed);
