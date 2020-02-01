@@ -9,13 +9,33 @@ namespace Player {
         public float speed = 10f;
         public float cameraRotateSpeed = 1f;
         public float cameraDistance = 10f;
-        public float velocityTreshold = 0.1f;
         public float initialCameraRotation = 0f;
-        public float rotationTreshold = 30f;
+        
         public Transform pushPoint;
         public Transform camera;
 
+        public Collider stabilityCollider;
+
         private float lastCameraTargetRotation;
+        private bool isAlive;
+
+        public void Die()
+        {
+            isAlive = false;
+
+            //Force recalculate center of mass
+            var rigidbody = GetComponent<Rigidbody>();
+            var velocity = rigidbody.velocity;
+            var angularVelocity = rigidbody.angularVelocity;
+
+            DestroyImmediate(stabilityCollider);
+            DestroyImmediate(rigidbody);
+            
+            var newRigidbody = gameObject.AddComponent<Rigidbody>();
+
+            newRigidbody.velocity = velocity;
+            newRigidbody.angularVelocity = angularVelocity;
+        }
 
         void Start() {
             if (camera == null)
@@ -24,6 +44,7 @@ namespace Player {
             }
 
             lastCameraTargetRotation = initialCameraRotation;
+            isAlive = true;
         }
 
         private void LateUpdate()
@@ -31,13 +52,19 @@ namespace Player {
             UpdateCamera();
         }
 
-        void FixedUpdate () {
+        void FixedUpdate ()
+        {
+            if (!isAlive)
+            {
+                return;
+            }
+            
             var move = Vector3.zero;
 
-            if (Input.GetKey ("w") || Input.GetKey("up")) {
+            if (Input.GetKey (KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
                 move.z = 1f;
             }
-            if (Input.GetKey ("s") || Input.GetKey("down")) {
+            if (Input.GetKey (KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
                 move.z = -1f;
             }
 
@@ -47,14 +74,19 @@ namespace Player {
                 move.y = 0;
                 move.Normalize();
             }
-            
-            GetComponent<Rigidbody>().AddForceAtPosition(move *= speed, pushPoint.position);
+
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift))
+            {
+                move *= 2f;
+            }
+
+            GetComponent<Rigidbody>().AddForceAtPosition(move * speed, pushPoint.position);
+
+            //GetComponent<Rigidbody>().AddForceAtPosition(Vector3.down * stabilityForce, stabilityPoint.position);
         }
 
         private void UpdateCamera()
         {
-            var velocity = GetComponent<Rigidbody>().velocity.ToVector2();
-
             //Manual camera rotate
             var cameraTargetRotation = lastCameraTargetRotation;
             if (Input.GetKeyDown(KeyCode.A))
@@ -66,16 +98,15 @@ namespace Player {
                 cameraTargetRotation -= 90f;
             }
 
-            if (velocity.magnitude > velocityTreshold)
+#if DEBUG
+            if (Input.GetKeyDown(KeyCode.Z))
             {
-                lastCameraTargetRotation = cameraTargetRotation;
+                Die();
             }
-            else
-            {
-                cameraTargetRotation = lastCameraTargetRotation;
-            }
+#endif
 
-
+            lastCameraTargetRotation = cameraTargetRotation;
+            
             var cameraCurrentRotation = (transform.position - camera.position).ToVector2().GetAngle();
 
             var newCameraAngle = Mathf.MoveTowardsAngle(cameraCurrentRotation, cameraTargetRotation, Time.deltaTime * cameraRotateSpeed);
