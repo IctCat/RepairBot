@@ -10,6 +10,7 @@ namespace Player {
         public float cameraRotateSpeed = 1f;
         public float cameraDistance = 10f;
         public float initialCameraRotation = 0f;
+        public float cameraTestRayRadius = 0.1f;
         
         public Transform pushPoint;
         public Transform camera;
@@ -17,6 +18,7 @@ namespace Player {
         public Collider stabilityCollider;
 
         private float lastCameraTargetRotation;
+        private float initialCameraHeight;
         private bool isAlive;
 
         public void Die()
@@ -43,6 +45,7 @@ namespace Player {
                 camera = FindObjectOfType<Camera>().transform;
             }
 
+            initialCameraHeight = camera.position.y;
             lastCameraTargetRotation = initialCameraRotation;
             isAlive = true;
         }
@@ -109,7 +112,7 @@ namespace Player {
             
             var cameraCurrentRotation = (transform.position - camera.position).ToVector2().GetAngle();
 
-            var newCameraAngle = Mathf.MoveTowardsAngle(cameraCurrentRotation, cameraTargetRotation, Time.deltaTime * cameraRotateSpeed);
+            var newCameraAngle = Mathf.LerpAngle(cameraCurrentRotation, cameraTargetRotation, Time.deltaTime * cameraRotateSpeed);
 
             var cameraDeltaPosition =
                 new Vector2(
@@ -117,7 +120,18 @@ namespace Player {
                     -Mathf.Sin(Mathf.Deg2Rad * newCameraAngle));
 
             var player2DPos = transform.position.ToVector2();
-            camera.position = (player2DPos + (cameraDeltaPosition * cameraDistance)).ToVector3(camera.position.y);
+            var wantedCameraPosition = (player2DPos + (cameraDeltaPosition * cameraDistance)).ToVector3(initialCameraHeight);
+
+            var cameraRayStart = transform.position + (Vector3.up * 2f);
+            var rayDelta = wantedCameraPosition - cameraRayStart;
+            cameraRayStart += rayDelta.normalized * 0.1f;
+
+            if (Physics.SphereCast(new Ray(cameraRayStart, rayDelta), cameraTestRayRadius, out var raycastHit, rayDelta.magnitude, ~(1 << 9)))
+            {
+                wantedCameraPosition = rayDelta.normalized * raycastHit.distance + cameraRayStart;
+            }
+
+            camera.position = wantedCameraPosition;
 
             //Look player
             var rot = camera.rotation;
