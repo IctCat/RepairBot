@@ -4,7 +4,7 @@ using UnityEngine;
 using PowerNetwork;
 
 namespace Entities {
-    public enum EntityType {Generator, Socket, Link, Obstacle};
+    public enum EntityType {Generator, Socket, Link};
 
     public class EntityHandler : MonoBehaviour
     {
@@ -28,17 +28,19 @@ namespace Entities {
         }
 
         public void Activate() {
+            Debug.Log("Activate " + this.entityType.ToString() + " " + this.entityIndex);
             if(!isActivated) {
                 this.isActivated = true;
-                if(entityType == EntityType.Socket) {
-                    this.powerGraph.UseNode(this.entityIndex, this.entityType);
-                } else if (entityType == EntityType.Link) {
-                    this.powerGraph.RepairNode(this.entityIndex, this.entityType);
-                } else if (entityType == EntityType.Generator) {
-                    this.powerGraph.UseNode(this.entityIndex, this.entityType);
-                } else if (entityType == EntityType.Obstacle) {
-                    // Todo call for removing the obstacle
-                }
+                //if(entityType == EntityType.Socket) {
+                //    this.powerGraph.UseNode(this.entityIndex, this.entityType);
+                //} else if (entityType == EntityType.Link) {
+                //    this.powerGraph.UseNode(this.entityIndex, this.entityType);
+                //} else if (entityType == EntityType.Generator) {
+                //    this.powerGraph.UseNode(this.entityIndex, this.entityType);
+                //}
+                this.powerGraph.UseNode(this.entityIndex, this.entityType);
+            } else if(entityType == EntityType.Socket) {
+                this.powerGraph.UseNode(this.entityIndex, this.entityType);
             }
         }
     }
