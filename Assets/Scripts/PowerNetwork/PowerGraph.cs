@@ -111,8 +111,11 @@ namespace PowerNetwork {
             } else if (entityType == EntityType.Link) {
                 PowerNode node = nodes[index];
                 int scrap = this.gameManager.scrap;
-                this.gameManager.DecreaseScrap(nodes[index].Repair(scrap));
-                this.UpdateEdges();
+                int cost = nodes[index].Repair(scrap);
+                if(cost != -1) {
+                    this.gameManager.DecreaseScrap(cost);
+                    this.UpdateEdges();
+                }
             } else if (entityType == EntityType.Generator) {
                 int scrap = this.gameManager.scrap;
                 this.gameManager.DecreaseScrap(nodes[index].Repair(scrap));

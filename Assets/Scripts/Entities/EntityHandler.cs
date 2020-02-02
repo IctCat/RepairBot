@@ -21,12 +21,6 @@ namespace Entities {
             this.powerGraph = this.PowerGraphGo.GetComponent<PowerGraph>();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         public void Activate() {
             Debug.Log("Activate " + this.entityType.ToString() + " " + this.entityIndex);
             if(!isActivated) {

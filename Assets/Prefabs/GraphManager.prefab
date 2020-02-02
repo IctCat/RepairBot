@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1396637187811817641
+--- !u!1 &6901954807425783197
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,134 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5923814459651693767}
+  - component: {fileID: 6238445500330894775}
+  - component: {fileID: -5131721115755228851}
   m_Layer: 0
   m_Name: GraphManager
-  m_TagString: Untagged
+  m_TagString: PowerGraph
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5923814459651693767
+--- !u!4 &6238445500330894775
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396637187811817641}
+  m_GameObject: {fileID: 6901954807425783197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.702988, y: -16.50215, z: 49.31366}
+  m_LocalPosition: {x: 0, y: 0.59000015, z: 6.7299957}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5131721115755228851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6901954807425783197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99db1492f5d42394aa02e5fd8f4f5d42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodes:
+  - working: 1
+    cost: 0
+    index: 0
+    nodeType: 1
+    charge: 2
+    nodeEdges: 000000000200000004000000
+  - working: 0
+    cost: 2
+    index: 1
+    nodeType: 2
+    charge: 0
+    nodeEdges: 0000000001000000
+  - working: 0
+    cost: 1
+    index: 2
+    nodeType: 0
+    charge: 10
+    nodeEdges: 01000000
+  - working: 0
+    cost: 2
+    index: 3
+    nodeType: 2
+    charge: 0
+    nodeEdges: 0200000003000000
+  - working: 0
+    cost: 1
+    index: 4
+    nodeType: 0
+    charge: 20
+    nodeEdges: 03000000
+  - working: 0
+    cost: 2
+    index: 5
+    nodeType: 2
+    charge: 0
+    nodeEdges: 040000000500000007000000
+  - working: 0
+    cost: 2
+    index: 6
+    nodeType: 2
+    charge: 0
+    nodeEdges: 0500000006000000
+  - working: 0
+    cost: 1
+    index: 7
+    nodeType: 0
+    charge: 30
+    nodeEdges: 06000000
+  - working: 0
+    cost: 1
+    index: 8
+    nodeType: 0
+    charge: 0
+    nodeEdges: 07000000
+  edges:
+  - working: 0
+    cost: 0
+    index: 0
+    startIndex: 0
+    endIndex: 1
+  - working: 0
+    cost: 0
+    index: 1
+    startIndex: 1
+    endIndex: 2
+  - working: 0
+    cost: 0
+    index: 2
+    startIndex: 0
+    endIndex: 3
+  - working: 0
+    cost: 0
+    index: 3
+    startIndex: 3
+    endIndex: 4
+  - working: 0
+    cost: 0
+    index: 4
+    startIndex: 0
+    endIndex: 5
+  - working: 0
+    cost: 0
+    index: 5
+    startIndex: 5
+    endIndex: 6
+  - working: 0
+    cost: 0
+    index: 6
+    startIndex: 6
+    endIndex: 7
+  - working: 0
+    cost: 0
+    index: 7
+    startIndex: 5
+    endIndex: 8

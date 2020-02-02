@@ -32,7 +32,7 @@ namespace Entities {
 
         private void OnTriggerEnter(Collider other) 
         {
-            Debug.Log("Triggered");
+            Debug.Log("Triggered " + other.gameObject.name + " : " + this.gameObject.name);
             this.isNear = true;
         }
         private void OnTriggerExit(Collider other)

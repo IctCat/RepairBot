@@ -35,11 +35,13 @@ namespace PowerNetwork {
         /// <summary> Repairs the element and returns reduced resource(int)</summary>
         /// <param name="resource">Int value</param>
         public int Repair(int resource) {
-            if(!this.IsWorking()) {
+            Debug.Log("Attempting repair " + resource);
+            if(!this.IsWorking() && resource >= cost) {
                 this.working = true;
-                resource -= this.cost;
+                Debug.Log("Repair success " + cost);
+                return cost;
             }
-            return resource;
+            return -1;
         }
 
         //TODO if time. Generators have to be activated and electricity starts flowing to socket.

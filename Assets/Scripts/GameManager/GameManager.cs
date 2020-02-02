@@ -51,11 +51,13 @@ public class GameManager : MonoBehaviour
     }
 
     public void IncreaseScrap(int addition) {
+        Debug.Log("Scrap increase!");
         this.scrap += addition;
         this.scrapText.text = this.scrap.ToString();
     }
 
     public void DecreaseScrap(int cost) {
+        Debug.Log("Scrap decrease! " + cost);
         this.scrap -= cost;
         this.scrapText.text = this.scrap.ToString();
     }
