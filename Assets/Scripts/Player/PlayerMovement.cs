@@ -112,7 +112,7 @@ namespace Player {
             
             var cameraCurrentRotation = (transform.position - camera.position).ToVector2().GetAngle();
 
-            var newCameraAngle = Mathf.MoveTowardsAngle(cameraCurrentRotation, cameraTargetRotation, Time.deltaTime * cameraRotateSpeed);
+            var newCameraAngle = Mathf.LerpAngle(cameraCurrentRotation, cameraTargetRotation, Time.deltaTime * cameraRotateSpeed);
 
             var cameraDeltaPosition =
                 new Vector2(
