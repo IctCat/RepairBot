@@ -100,7 +100,7 @@ namespace PowerNetwork {
             return gainedCharge;
         }
 
-        public void UseNode(int index, EntityType entityType) 
+        public void UseNode(int index, EntityType entityType, GameObject go) 
         {
             Debug.Log("UseNode " + entityType.ToString());
             if(entityType == EntityType.Socket) {
@@ -114,6 +114,8 @@ namespace PowerNetwork {
                 int cost = nodes[index].Repair(scrap);
                 if(cost != -1) {
                     this.gameManager.DecreaseScrap(cost);
+                    Debug.Log("Trying to disable " + go.name + " " + go.transform.GetChild(0).gameObject.name);
+                    go.transform.GetChild(0).gameObject.SetActive(false);
                     this.UpdateEdges();
                 }
             } else if (entityType == EntityType.Generator) {
