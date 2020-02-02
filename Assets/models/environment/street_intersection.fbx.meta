@@ -3,7 +3,17 @@ guid: af913078c2d462c4998bf0466cbaa36e
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: asphalt
+    second: {fileID: 2100000, guid: 044d75e306527894a8ca8b8e9ac05c3f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: plaster
+    second: {fileID: 2100000, guid: 5e3438a550b7a72419a9bd045531df83, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
