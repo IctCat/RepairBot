@@ -507,6 +507,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ef92a3a6ab704640aabfd7609180fa2, type: 3}
+--- !u!1 &623544427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4504631157067139906, guid: 174f96aa7f4277f4baf9ab27d9eb953f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2121702217}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &645813786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -789,8 +795,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   electricity: 5
   scrap: 15
-  electricityTextObject: {fileID: 0}
-  scrapTextObject: {fileID: 0}
+  electricityTextObject: {fileID: 623544427}
+  scrapTextObject: {fileID: 1975822961}
 --- !u!1001 &871525242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1143,6 +1149,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6352929523161650915, guid: e755efa1bce260d4c99dfa3c9235a43c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e755efa1bce260d4c99dfa3c9235a43c, type: 3}
@@ -1605,6 +1616,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 741f814cbf370d248aa2d3cdab60c367, type: 3}
+--- !u!1 &1975822961 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4504631156219442614, guid: 174f96aa7f4277f4baf9ab27d9eb953f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2121702217}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2049195580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1804,7 +1821,7 @@ PrefabInstance:
     - target: {fileID: 4504631156584257557, guid: 174f96aa7f4277f4baf9ab27d9eb953f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 174f96aa7f4277f4baf9ab27d9eb953f, type: 3}
