@@ -71,6 +71,7 @@ namespace PowerNetwork {
 
         public int CheckCharges(PowerNode node, HashSet<int> set) 
         {
+            Debug.Log("Checking charges");
             if(set.Contains(node.index)) {
                 return 0;
             }
@@ -97,6 +98,7 @@ namespace PowerNetwork {
                 }
 
             }
+            Debug.Log("Gained " + gainedCharge);
             return gainedCharge;
         }
 
@@ -120,8 +122,16 @@ namespace PowerNetwork {
                 }
             } else if (entityType == EntityType.Generator) {
                 int scrap = this.gameManager.scrap;
-                this.gameManager.DecreaseScrap(nodes[index].Repair(scrap));
-                this.UpdateEdges();
+                //this.gameManager.DecreaseScrap(nodes[index].Repair(scrap));
+                 int cost = nodes[index].Repair(scrap);
+                if(cost != -1) {
+                    this.gameManager.DecreaseScrap(cost);
+                    Debug.Log("Trying to disable " + go.name + " " + go.transform.GetChild(0).gameObject.name);
+                    //go.transform.GetChild(0).gameObject.SetActive(false);
+                    this.UpdateEdges();
+                }
+
+                //this.UpdateEdges();
             }
         }
     }

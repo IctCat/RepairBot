@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -43,6 +44,9 @@ public class GameManager : MonoBehaviour
     public void IncreaseElectricity(int addition) {
         this.electricity += addition;
         this.electricityText.text = this.electricity.ToString();
+        if(electricity >= 100) {
+            SceneManager.LoadScene("Credits");
+        }
     }
     
     public void DecreaseElectricity(int cost) {
