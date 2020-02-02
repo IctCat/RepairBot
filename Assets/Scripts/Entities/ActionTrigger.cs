@@ -16,7 +16,16 @@ namespace Entities {
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKey ("e") || Input.GetKey("f")) {
+            if (Input.GetKeyDown ("e") || Input.GetKeyDown("f")) {
+                this.CanActivate();
+            }
+        }
+
+        void CanActivate() 
+        {
+            //Debug.Log("CanIActivate");
+            if(this.isNear) {
+                //Debug.Log("Is near");
                 this.entityHandler.Activate();
             }
         }

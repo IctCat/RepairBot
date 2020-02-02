@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 1831423056089910946}
   - component: {fileID: 4305306610406077947}
   - component: {fileID: 5472120776882739994}
+  - component: {fileID: 5286204416518811266}
   m_Layer: 0
   m_Name: building_corner
   m_TagString: Untagged
@@ -251,6 +252,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &5286204416518811266
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4656176749520505231}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4109696884240221771, guid: 317eda6ed85213a43ad625753e702c23, type: 3}
 --- !u!1 &6008923745266043760
 GameObject:
   m_ObjectHideFlags: 0
