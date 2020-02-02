@@ -11,7 +11,8 @@ namespace Entities {
         public int cost;
         private GameObject GameManagerGo;
         private GameManager gameManager;
-
+        private GameObject particles;
+        public bool obstacle = false;
         // Start is called before the first frame update
         void Start()
         {
@@ -23,6 +24,9 @@ namespace Entities {
             if(!this.isActivated) {
                 this.isActivated = true;
                 this.gameManager.DecreaseScrap(this.cost);
+                if(obstacle) {
+                    Destroy(this.gameObject);
+                }
             }
         }
     }

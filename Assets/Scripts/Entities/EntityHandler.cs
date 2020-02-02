@@ -32,9 +32,9 @@ namespace Entities {
                 //} else if (entityType == EntityType.Generator) {
                 //    this.powerGraph.UseNode(this.entityIndex, this.entityType);
                 //}
-                this.powerGraph.UseNode(this.entityIndex, this.entityType);
+                this.powerGraph.UseNode(this.entityIndex, this.entityType, this.gameObject);
             } else if(entityType == EntityType.Socket) {
-                this.powerGraph.UseNode(this.entityIndex, this.entityType);
+                this.powerGraph.UseNode(this.entityIndex, this.entityType, this.gameObject);
             }
         }
     }

@@ -101,12 +101,12 @@ namespace Player {
                 cameraTargetRotation -= 90f;
             }
 
-#if DEBUG
+//if DEBUG
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 Die();
             }
-#endif
+//#endif
 
             lastCameraTargetRotation = cameraTargetRotation;
             
