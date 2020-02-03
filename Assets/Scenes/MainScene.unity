@@ -1698,7 +1698,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143588140}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ae5ba4d58c12b4043960718af00460f0, type: 3}
@@ -1803,6 +1803,11 @@ PrefabInstance:
     - target: {fileID: 6250962573527775232, guid: 20c406b5c7d065e49993886a7c80a2c4,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6250962573527775232, guid: 20c406b5c7d065e49993886a7c80a2c4,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6250962573527775233, guid: 20c406b5c7d065e49993886a7c80a2c4,
@@ -2058,7 +2063,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ae5ba4d58c12b4043960718af00460f0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.03
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2445,7 +2450,7 @@ PrefabInstance:
     - target: {fileID: 1873734035407982446, guid: 30ea3fe086ce0aa48a8b37747c9753e6,
         type: 3}
       propertyPath: m_Name
-      value: Generator(2)
+      value: Socket(0)
       objectReference: {fileID: 0}
     - target: {fileID: 9142302998418315053, guid: 30ea3fe086ce0aa48a8b37747c9753e6,
         type: 3}
@@ -3257,7 +3262,7 @@ PrefabInstance:
     - target: {fileID: 5681120569939324346, guid: ad1a1026e1e372a4a93f66275d59ed88,
         type: 3}
       propertyPath: m_Name
-      value: rocks
+      value: Generator(2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad1a1026e1e372a4a93f66275d59ed88, type: 3}

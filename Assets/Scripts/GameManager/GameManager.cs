@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Player;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI electricityText;
     public GameObject scrapTextObject;
     private TextMeshProUGUI scrapText;
+    private GameObject PlayerGo;
+    private PlayerMovement playerMovement;
     
     void Start()
     {
@@ -21,7 +24,8 @@ public class GameManager : MonoBehaviour
         this.electricityText.text = this.electricity.ToString();
         this.scrapText = this.scrapTextObject.GetComponent<TextMeshProUGUI>();
         this.scrapText.text = this.scrap.ToString();
-        
+        this.PlayerGo = GameObject.FindGameObjectWithTag("Player");
+        this.playerMovement = PlayerGo.GetComponent<PlayerMovement>();
         //InvokeRepeating("DrainElectricity", 1.0f, 1.0f);    
         StartCoroutine(DrainEnumerator(1, 10));
     }
@@ -52,6 +56,9 @@ public class GameManager : MonoBehaviour
     public void DecreaseElectricity(int cost) {
         this.electricity -= cost;
         this.electricityText.text = this.electricity.ToString();
+        if(electricity <= 0) {
+            this.playerMovement.Die();
+        }
     }
 
     public void IncreaseScrap(int addition) {

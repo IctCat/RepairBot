@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Player {
     public class PlayerMovement : MonoBehaviour
@@ -37,6 +38,11 @@ namespace Player {
 
             newRigidbody.velocity = velocity;
             newRigidbody.angularVelocity = angularVelocity;
+            Invoke("RestartGame", 10);
+        }
+
+        public void RestartGame() {
+            SceneManager.LoadScene("MainScene");
         }
 
         void Start() {
