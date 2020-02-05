@@ -9,3 +9,10 @@
 
 In general we achieved our goals quite nicely - and of course - learn't many new things.
 Thank you for everyone involved in Global Game Jam 2020, see you next time!
+
+## LICENSE
+Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
+See LISENCE file or https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+## DISCLAIMER
+Contains assets from Poliigon.com - Assets may not be redistributed.
